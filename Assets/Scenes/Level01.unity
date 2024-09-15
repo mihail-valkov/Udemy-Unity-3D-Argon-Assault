@@ -546,6 +546,7 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 0}
   hitEffectPrefab: {fileID: 0}
   killScore: 10
+  hitScore: 1
   health: 6
 --- !u!1 &905054738
 GameObject:
@@ -613,9 +614,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 3983143130765208399, guid: b5ebdbb1f5485664d8e749f27a512027, type: 3}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6319766688167182124, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
   killScore: 10
-  health: 6
+  hitScore: 1
+  health: 60
 --- !u!95 &962862613
 Animator:
   serializedVersion: 5
@@ -825,9 +827,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 3983143130765208399, guid: b5ebdbb1f5485664d8e749f27a512027, type: 3}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6319766688167182124, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
   killScore: 10
-  health: 6
+  hitScore: 1
+  health: 60
 --- !u!95 &1053327862
 Animator:
   serializedVersion: 5
@@ -1238,6 +1241,7 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 0}
   hitEffectPrefab: {fileID: 0}
   killScore: 10
+  hitScore: 1
   health: 6
 --- !u!1 &1780800184
 GameObject:
@@ -1380,9 +1384,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 3983143130765208399, guid: b5ebdbb1f5485664d8e749f27a512027, type: 3}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6319766688167182124, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
   killScore: 10
-  health: 6
+  hitScore: 1
+  health: 60
 --- !u!1 &1857274447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,9 +1422,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 3983143130765208399, guid: b5ebdbb1f5485664d8e749f27a512027, type: 3}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6319766688167182124, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
   killScore: 10
-  health: 6
+  hitScore: 1
+  health: 60
 --- !u!95 &1857274449
 Animator:
   serializedVersion: 5
@@ -1646,8 +1652,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffectPrefab: {fileID: 3983143130765208399, guid: b5ebdbb1f5485664d8e749f27a512027, type: 3}
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6319766688167182124, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
   killScore: 20
+  hitScore: 1
   health: 6
 --- !u!1001 &4483138157857723000
 PrefabInstance:
@@ -1676,6 +1683,10 @@ PrefabInstance:
     - target: {fileID: 4251435422813333730, guid: cc39a7a5034927843a16cc7bc6edadc6, type: 3}
       propertyPath: m_Name
       value: PlayerRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425920205452984837, guid: cc39a7a5034927843a16cc7bc6edadc6, type: 3}
+      propertyPath: health
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 8109953216577108912, guid: cc39a7a5034927843a16cc7bc6edadc6, type: 3}
       propertyPath: m_Enabled
@@ -1886,6 +1897,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1770061040691162779, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.35437
+      objectReference: {fileID: 0}
     - target: {fileID: 1820897685679922335, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1909,6 +1924,22 @@ PrefabInstance:
     - target: {fileID: 1820897685679922335, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150751864741036519, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -49.71826
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150751864741036519, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.494873
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192274084451482717, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 94.859375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192274084451482717, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 53.43994
       objectReference: {fileID: 0}
     - target: {fileID: 7295717348538721412, guid: 0a826eea712ef484e9bc0921e9b73d1f, type: 3}
       propertyPath: m_AnchorMax.x
