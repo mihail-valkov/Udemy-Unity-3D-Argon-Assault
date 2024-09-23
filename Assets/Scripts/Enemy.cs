@@ -7,13 +7,36 @@ public class Enemy : MonoBehaviour
     [SerializeField] ParticleSystem explosionEffectPrefab;
     [SerializeField] ParticleSystem hitEffectPrefab;
     [SerializeField] int killScore = 10;
-    [SerializeField] int hitScore = 1;
+    //[SerializeField] int hitScore = 1;
     [SerializeField] float health = 6f;
+
+    bool isDead = false;
+
+    void Awake()
+    {
+        //add a rigid body to the enemy
+        var existingRb = gameObject.GetComponent<Rigidbody>();
+        if (!existingRb)
+        {
+            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+            rb.useGravity = false;
+        }
+    }
 
     void OnParticleCollision(GameObject other)
     {
+        TakeDamage(1f);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (isDead)
+        {
+            return;
+        }
+
         // Decrease health by 1 for each particle collision
-        health -= 1;
+        health -= damage;
 
         // Play hit effect if available
         if (hitEffectPrefab)
@@ -28,6 +51,7 @@ public class Enemy : MonoBehaviour
         // Check if health is zero or below
         if (health <= 0)
         {
+            isDead = true;
             // Play explosion effect if available
             if (explosionEffectPrefab)
             {
@@ -47,7 +71,7 @@ public class Enemy : MonoBehaviour
         else
         {
             // Add score to the score keeper
-            GameManager.Instance.ScoreKeeper.AddScore(hitScore);
+            //GameManager.Instance.ScoreKeeper.AddScore(hitScore);
         }
     }
 

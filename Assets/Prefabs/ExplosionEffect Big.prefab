@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosionEffect Big
       objectReference: {fileID: 0}
+    - target: {fileID: 2651410789435543905, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651410789435543905, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651410789435543905, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 84ed498c1e0d87b4eb7485ef0e9ef28b, type: 3}
     - target: {fileID: 5109825898939119969, guid: 2bc72ad23d9e77c44b5a92f6e51b7461, type: 3}
       propertyPath: m_Enabled
       value: 1

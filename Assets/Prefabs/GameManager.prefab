@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4277614769565759328}
   - component: {fileID: 1714396887515795177}
   - component: {fileID: 3054833535473404988}
+  - component: {fileID: 6191930263675600786}
+  - component: {fileID: 5546387575299531213}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -142,3 +144,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6191930263675600786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911964223173397831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a908ea36ed55946b615a89228f1ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5546387575299531213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911964223173397831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb14cf73d4bf0c642b40af19416581fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthValue: 1000
+  hitDamage: 10

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float controlPitchFactor = 10;
     [SerializeField] float controlRollFactor = 15;
     [SerializeField] float cameraYOffset = 3;
+    [SerializeField] AudioClip[] laserSounds;
 
     [Header("Shooting Settings")]
     //[SerializeField] float shootingInterval = 0.1f;
@@ -32,15 +33,35 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 currentVelocity = Vector2.zero;
     private Vector2 previousInput = Vector2.zero;
-    private float accelerationSmoothTime = 0.1f;
-    private float decelerationSmoothTime = 0.05f;
+    private float accelerationSmoothTime = 0.05f;
+    private float decelerationSmoothTime = 0.02f;
     float lastInputTime;
 
     Vector2 input;
+    Health playerHealth;
+    
+    bool controlsEnabled = true;
+    private Vector3 playerInitialPosition;
+    private Vector3 playerInitialRotation;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerInitialPosition = transform.localPosition;
+        playerInitialRotation = transform.localRotation.eulerAngles;
+    } 
+
+    void Awake()
+    {
+        playerHealth = GetComponent<Health>();
+
+        //find all child colliders and set them as triggers
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (var collider in colliders)
+        {
+            collider.isTrigger = true;
+        }
     }
 
     private void OnEnable()
@@ -61,15 +82,16 @@ public class PlayerController : MonoBehaviour
         Move();
 
         //if P is pressed, slow down the motion animation
-        if (Keyboard.current.pKey.wasPressedThisFrame)
+        if (playerHealth)
         {
-            CollisionHandler collisionHandler = GetComponent<CollisionHandler>();
-            collisionHandler.SlowDownMotion();
-        }
-        else if (Keyboard.current.oKey.wasPressedThisFrame)
-        {
-            CollisionHandler collisionHandler = GetComponent<CollisionHandler>();
-            collisionHandler.ResumeMotion();
+            if (Keyboard.current.pKey.wasPressedThisFrame)
+            {
+                playerHealth.SlowDownMotion();
+            }
+            else if (Keyboard.current.oKey.wasPressedThisFrame)
+            {
+                playerHealth.ResumeMotion();
+            }
         }
     }
 
@@ -88,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
 
         float timeSinceLastInput = Time.time - lastInputTime;
-        bool isDecelerating = timeSinceLastInput > 0.05f; // Small threshold to differentiate between no input and very small input
+        bool isDecelerating = timeSinceLastInput > 0.03f; // Small threshold to differentiate between no input and very small input
 
         float smoothTime = isDecelerating ? decelerationSmoothTime : accelerationSmoothTime;
 
@@ -96,7 +118,7 @@ public class PlayerController : MonoBehaviour
         currentVelocity = Vector2.SmoothDamp(currentVelocity, input, ref currentVelocity, smoothTime);
 
         // If we're decelerating and velocity is very small, set it to zero to prevent floating
-        if (isDecelerating && currentVelocity.sqrMagnitude < 0.01f)
+        if (isDecelerating && currentVelocity.sqrMagnitude < 0.02f)
         {
             currentVelocity = Vector2.zero;
         }
@@ -125,6 +147,36 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
     }
 
+    public void MovePlayerToSInitialPosition()
+    {
+        //move player gradually to the initial position
+        StartCoroutine(MovePlayerToInitialPosition());
+    }
+
+    private IEnumerator MovePlayerToInitialPosition()
+    {
+        float duration = 1.5f;
+        float elapsedTime = 0;
+        Vector3 initialPosition = playerInitialPosition;
+
+        //Vector3 initialRotation = playerInitialRotation;
+
+        Vector3 initialLocalPosition = transform.localPosition;
+        //Vector3 initialLocalRotation = transform.localRotation.eulerAngles;
+
+        while (elapsedTime < duration)
+        {
+            transform.localPosition = Vector3.Lerp(initialLocalPosition, initialPosition, elapsedTime / duration);
+            //transform.localRotation = Quaternion.Euler(Vector3.Lerp(initialLocalRotation, initialRotation, elapsedTime / duration));
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = initialPosition;
+        //transform.localRotation = Quaternion.Euler(initialRotation);
+    }
+
     private void Shoot()
     {
 
@@ -140,6 +192,12 @@ public class PlayerController : MonoBehaviour
 
     private void SetLasersEnabled(bool active)
     {
+        if (laserSounds.Length > 0 && active)
+        {
+            //play random laser sound
+            PlayRandomSound(laserSounds);   
+        }
+
         foreach (var laser in lasers)
         {
             //enalbe emission component
@@ -148,7 +206,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool controlsEnabled = true;
+    float previousSoundTime = 0;
+    private void PlayRandomSound(AudioClip[] clips)
+    {
+        //play random sound and wait for 200 milliseconds before playing another sound
+        if (Time.time - previousSoundTime < 0.08f)
+        {
+            return;
+        }
+
+        previousSoundTime = Time.time;
+        var randomIndex = UnityEngine.Random.Range(0, clips.Length);
+        //var audioSource = GetComponent<AudioSource>();
+        //audioSource.PlayOneShot(clips[randomIndex]);
+        AudioSource.PlayClipAtPoint(clips[randomIndex], transform.position);
+    }
 
     public bool ControlsEnabled
     {

@@ -75,8 +75,18 @@ PlayableDirector:
     value: {fileID: 8109953216577108912}
   - key: {fileID: 770056979528515625, guid: b93b31d8113979a439887075db685da0, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -6036093867900779861, guid: b93b31d8113979a439887075db685da0, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 8b8a8667a0584bb4aa239a23b7a85973: {fileID: 0}
+    - 7f6c6de2ca28cc940a342e3bc075f180: {fileID: 0}
+    - 6855ed666f8b227498f85ee65e441d61: {fileID: 0}
+    - 01645543f0770f54d9243d2fef9924c9: {fileID: 0}
+    - dac24e0c86f97b84a803c2ba060500fd: {fileID: 0}
+    - 20c35913e4e9b544fb862e51507aaf3a: {fileID: 0}
+    - b0aa1479bb774a54db5eb2ee08856ba6: {fileID: 0}
+    - b4bb1c6d1bd5cce43b658c39ff97b136: {fileID: 0}
 --- !u!1 &8344804311975349088
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +98,7 @@ GameObject:
   - component: {fileID: 6244792984751952831}
   - component: {fileID: 1850785677320989914}
   - component: {fileID: 2132668407085632186}
+  - component: {fileID: 465865339151153966}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -104,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 8344804311975349088}
   serializedVersion: 2
   m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 3, z: -18}
+  m_LocalPosition: {x: -0, y: 2.61, z: -13.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,6 +180,66 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8344804311975349088}
   m_Enabled: 1
+--- !u!114 &465865339151153966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344804311975349088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 6244792984751952831}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 1
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &3138305866675534488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +248,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8542498032375666696}
     m_Modifications:
+    - target: {fileID: 618735091822655771, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: contorlSpeed
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: yawPositionFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: controlPitchFactor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: positionPitchFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: laserSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: laserSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a0216f7f7efe3e46b84f06fcf9284e4, type: 3}
+    - target: {fileID: 1163554800169661505, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: laserSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9acf0d654841b534097d8ce033b92131, type: 3}
+    - target: {fileID: 5017003701735442970, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017003701735442970, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017003701735442970, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61
+      objectReference: {fileID: 0}
     - target: {fileID: 5017003701735442970, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -217,6 +332,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5513439054325348509, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: playableDirector
+      value: 
+      objectReference: {fileID: 8496897169139443097}
+    - target: {fileID: 5513439054325348509, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
+      propertyPath: explosionSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 84ed498c1e0d87b4eb7485ef0e9ef28b, type: 3}
     - target: {fileID: 5680212195413233824, guid: d48267c1e522f0d4a80145c84b2b33dd, type: 3}
       propertyPath: m_Name
       value: PlayerShip
